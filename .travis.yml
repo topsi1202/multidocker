@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t maorm/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t maorizio1202/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true maorm/react-test npm test
+  - docker run -e CI=true maorizio1202/react-test npm test
 
 after_success:
-  - docker build -t maorm/multi-client ./client
-  - docker build -t maorm/multi-nginx ./nginx
-  - docker build -t maorm/multi-server ./server
-  - docker build -t maorm/multi-worker ./worker
+  - docker build -t maorizio1202/multi-client ./client
+  - docker build -t maorizio1202/multi-nginx ./nginx
+  - docker build -t maorizio1202/multi-server ./server
+  - docker build -t maorizio1202/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push maorm/multi-client
-  - docker push maorm/multi-nginx
-  - docker push maorm/multi-server
-  - docker push maorm/multi-worker
+  - docker push maorizio1202/multi-client
+  - docker push maorizio1202/multi-nginx
+  - docker push maorizio1202/multi-server
+  - docker push maorizio1202/multi-worker
